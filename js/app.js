@@ -12,8 +12,18 @@ const Cart = function(items) {
   this.items = items;
 };
 
+const CartItem = function(product, quantity) {
+  this.product = product;
+  this.quantity = quantity;
+};
+
 Cart.prototype.addItem = function(product, quantity) {
   // TODO: Fill in this instance method to create a new CartItem and add it to this.items
+  // make a new item with out keyword "new" in our constructor function
+  // an object from the constructor will be passed in
+  // the data type of quantity is a number
+  const newItem = CartItem(product, quantity)
+  this.items.push(newItem)
 };
 
 Cart.prototype.saveToLocalStorage = function() {
@@ -28,11 +38,6 @@ Cart.prototype.removeItem = function(item) {
 Cart.prototype.updateCounter = function() {
   // TODO: Update the cart count in the header nav with the number of items in the Cart
 }
-
-const CartItem = function(product, quantity) {
-  this.product = product;
-  this.quantity = quantity;
-};
 
 // Product contructor.
 const Product = function(filePath, name) {
