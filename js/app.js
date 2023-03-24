@@ -17,6 +17,8 @@ const CartItem = function(product, quantity) {
   this.quantity = quantity;
 };
 
+  // addItem is a method
+  // product is an object
 Cart.prototype.addItem = function(product, quantity) {
   // TODO: Fill in this instance method to create a new CartItem and add it to this.items
   // make a new item with out keyword "new" in our constructor function
@@ -24,10 +26,15 @@ Cart.prototype.addItem = function(product, quantity) {
   // the data type of quantity is a number
   const newItem = CartItem(product, quantity)
   this.items.push(newItem)
+  console.log(this.items)
+  // let newCart = new Cart([]) / newCart.addItem() / let bag = state.allProducts[0] / bag / newCart.addItem(bag, 1) /
 };
 
 Cart.prototype.saveToLocalStorage = function() {
   // TODO: Fill in this instance method to save the contents of the cart to localStorage
+  // a string is the only data type localStorage can store
+  let cartSTring = JSON.stringify(state.cart)
+  localStorage.setItem("cart", cartString) // to get the items I want to save, I must pass in cart as a string and then stringify the cart itself
 };
 
 Cart.prototype.removeItem = function(item) {
