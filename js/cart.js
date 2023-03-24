@@ -6,8 +6,23 @@ const table = document.getElementById('cart');
 table.addEventListener('click', removeItemFromCart);
 
 function loadCart() {
-  const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+  // const cartItems = JSON.parse(localStorage.getItem('cart')) || []; // multiply operations in one line // 
+  var cartItems = undefined;
+  let cartString = localStorage.getItem("cart")
+  let cartObject = JSON.parse(cartString)
+  if(cartObject == undefined){
+    cartItems = []
+  }else{
+    cartItems = cartObject.items
+  }
   state.cart = new Cart(cartItems);
+  console.log("state.cart", state.cart)
+    // var = new Cart ([])
+    // cart.addItem(state.allProducts[0], 1)
+    // cart.addItem(state.allProducts[1], 1)
+    // local.Storage
+    // local.Storage.clear
+    // loadCart()
 }
 
 // Make magic happen --- re-pull the Cart, clear out the screen and re-draw it
