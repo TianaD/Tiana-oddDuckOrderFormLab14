@@ -66,9 +66,16 @@ Cart.prototype.removeItem = function(item) {
 
 Cart.prototype.updateCounter = function() {
   // TODO: Update the cart count in the header nav with the number of items in the Cart
+  // target span element and use it to display our number of items in the cart
+  let counterHTMLElement = document.getElementById("itemCount") // i am setting what this method returns equal to counterHTMLElement. It returns an element. We want to change that element: the length of the cart element.
+  counterHTMLElement.innerHTML = " " + this.items.length
+    // let cart = new Cart([])
+    // cart.addItem(state.allProducts[0], 1)
+    // cart.addItem(state.allProducts[1], 1)
+    // cart.updateCounter()
 }
 
-// Product contructor.
+// Product constructor.
 const Product = function(filePath, name) {
   this.filePath = filePath;
   this.name = name;
