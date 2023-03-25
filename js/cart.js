@@ -62,7 +62,7 @@ function showCart() {
   let tableItem = document.createElement("td");
   tableItem.innerHTML = items[i].product.name;
   // TODO: Add the TR to the TBODY and each of the TD's to the TR
-  tableRow.append(tableDeletedLink, quantity, item);
+  tableRow.append(tableDeletedLink, tableQuantity, tableItem);
   tableBody.append(tableRow);
   }
 }
@@ -74,9 +74,9 @@ function removeItemFromCart(event) {
     let deletedItemName = clickedRow.children[2].innerText;
 
     for (let i = 0; i < state.cart.items.length; i++){
-      let item = state.cart.items[i].products;
-      if (item.name === deletedItemName){
-        state.cart.removeItem(item);
+      let tableItem = state.cart.items[i].products;
+      if (tableItem.name === deletedItemName){
+        state.cart.removeItem(tableItem);
       }
     }
   }
