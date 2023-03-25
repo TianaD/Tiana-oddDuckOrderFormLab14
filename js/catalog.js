@@ -13,7 +13,9 @@ function populateForm() {
   const selectElement = document.getElementById('items');
   for (let i in state.allProducts) {
   // create a for loop that creates a variable for an option tag and 
-    let optionTag = document.
+    let optionTag = document.createElement("option");
+    optionTag.innerHTML = state.allProducts[i].name;
+    selectElement.append(optionTag)
   }
 
 }

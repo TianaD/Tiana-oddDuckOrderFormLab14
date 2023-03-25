@@ -33,9 +33,9 @@ Cart.prototype.addItem = function(product, quantity) {
 Cart.prototype.saveToLocalStorage = function() {
   // TODO: Fill in this instance method to save the contents of the cart to localStorage
   // a string is the only data type localStorage can store
-  let cartSTring = JSON.stringify(state.cart)
+  let cartString = JSON.stringify(state.cart)
   localStorage.setItem("cart", cartString) // to get the items I want to save, I must pass in cart as a string and then stringify the cart itself
-  console.log(localStorage) // these tests are more involved
+  // console.log(localStorage) // these tests are more involved
     // testing a method on the cart object
     // let cart = new Cart([]) pass in empty array
     // push item into cart let cartItem = new CartItem(state.allProducts[0], 1)
@@ -56,12 +56,12 @@ Cart.prototype.removeItem = function(item) {
       return true
     }
   }) 
-  console.log(this.itmes) //
-  // call methods on cart object ; create new cart
-  // let cart = new Cart([])
-  // cart.addItem(state.allProducts[0], 1)
-  // cart.addItem(state.allProducts[1], 1)
-  // cart.removeItem("Banana")
+  // console.log(this.items) //
+    // call methods on cart object ; create new cart
+    // let cart = new Cart([])
+    // cart.addItem(state.allProducts[0], 1)
+    // cart.addItem(state.allProducts[1], 1)
+    // cart.removeItem("Banana")
 };
 
 Cart.prototype.updateCounter = function() {

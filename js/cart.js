@@ -16,7 +16,7 @@ function loadCart() {
     cartItems = cartObject.items
   }
   state.cart = new Cart(cartItems);
-  console.log("state.cart", state.cart)
+  // console.log("state.cart", state.cart)
     // var = new Cart ([])
     // cart.addItem(state.allProducts[0], 1)
     // cart.addItem(state.allProducts[1], 1)
@@ -33,26 +33,57 @@ function renderCart() {
 }
 
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
-function clearCart() {}
+function clearCart() {
+  let tableRows = document.querySelectorAll('tbody tr');
+  for(let i = 0; i < tableRows.length; i++){
+    tableRows[i].remove();
+  }
+}
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
 
   // TODO: Find the table body
-
+  let tableBody = document.getElementById("cart")
+  let items = state.cart.items;
   // TODO: Iterate over the items in the cart
-  // TODO: Create a TR
-  // TODO: Create a TD for the delete link, quantity,  and the item
-  // TODO: Add the TR to the TBODY and each of the TD's to the TR
+  for (let i = 0; i < items.length; i++){
 
+  
+  // TODO: Create a TR
+  let tableRow = document.createElement("tr")
+  // TODO: Create a TD for the delete link, quantity,  and the item
+  let tableDeletedLink = document.createElement("td");
+  tableDeletedLink.innerHTML = "X";
+
+  let tableQuantity = document.createElement("td");
+  tableQuantity.innerHTML = items[i].tableQuantity;
+
+  let tableItem = document.createElement("td");
+  tableItem.innerHTML = items[i].product.name;
+  // TODO: Add the TR to the TBODY and each of the TD's to the TR
+  tableRow.append(tableDeletedLink, quantity, item);
+  tableBody.append(tableRow);
+  }
 }
 
-function removeItemFromCart(event) {
 
+function removeItemFromCart(event) {
+  if(event.target.innerHTML == "X"){
+    let clickedRow = event.target.parentElement;
+    let deletedItemName = clickedRow.children[2].innerText;
+
+    for (let i = 0; i < state.cart.items.length; i++){
+      let item = state.cart.items[i].products;
+      if (item.name === deletedItemName){
+        state.cart.removeItem(item);
+      }
+    }
+  }
   // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
   // TODO: Save the cart back to local storage
   // TODO: Re-draw the cart table
-
+  renderCart();
 }
 
 // This will initialize the page and draw the cart on screen
